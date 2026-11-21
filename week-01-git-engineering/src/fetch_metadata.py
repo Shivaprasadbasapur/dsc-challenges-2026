@@ -26,7 +26,7 @@ TRACK = "CREDIT_TRACK_YEAR2"        # "CREDIT_TRACK_YEAR2" or "GROWTH_TRACK_YEAR
 def collect_environment_metadata() -> dict:
     """
     Collects runtime diagnostic metadata from the host environment.
-    
+
     Returns:
         dict: Diagnostic details including python version, OS platform,
               active virtualenv status, and ISO timestamp.
@@ -64,7 +64,7 @@ def main():
     data = collect_environment_metadata()
 
     # Validation guard for recruit details
-    if "XXXX" in data["student"]["usn"] or data["student"]["name"] == "Your Full Name":
+    if "XXXX" in data["student"]["usn"]:
         print("\n⚠️ WARNING: Please update STUDENT_USN and STUDENT_NAME in src/fetch_metadata.py!")
     else:
         print(f"\n[OK] Registered to: {data['student']['name']} ({data['student']['usn']})")
